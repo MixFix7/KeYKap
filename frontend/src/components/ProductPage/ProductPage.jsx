@@ -3,6 +3,7 @@ import Product from '../Home/NewProduct/Product'
 import { useLoaderData } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { ProductImages } from './Product/ProductImages'
 
 
 const ProductPage = () => {
@@ -12,12 +13,7 @@ const ProductPage = () => {
   return (
     <div className=''>
       {product.map((prod) => (
-        <Product
-          key={prod.id}
-          id={prod.id}
-          name={prod.name}
-          img={prod.specs.image}
-        />
+        <ProductImages key={prod.id} images={prod.specs.image}/>
       ))}
     </div>
   );
