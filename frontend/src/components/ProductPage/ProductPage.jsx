@@ -8,13 +8,14 @@ import { ProductImages } from './Product/ProductImages'
 
 const ProductPage = () => {
   const product = Object.values(useLoaderData());
-  console.log(product)
 
   return (
     <div className=''>
-      {product.map((prod) => (
-        <ProductImages key={prod.id} images={prod.specs.image}/>
-      ))}
+      <div className='Images'>
+        {product.map((image, index) => 
+          <ProductImages key={index} image={image.specs.image}/>      
+        )}
+      </div>
     </div>
   );
 };
