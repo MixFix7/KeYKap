@@ -1,4 +1,6 @@
 .image {
+    margin-left: 50px;
+    margin-top: 150px;
     max-width: 900px;
     max-height: 500px;
 }
