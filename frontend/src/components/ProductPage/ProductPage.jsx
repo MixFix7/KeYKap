@@ -4,6 +4,7 @@ import { useLoaderData } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { ProductImages } from './Product/ProductImages'
+import Header from './../Home/Bars/Header';
 
 
 const ProductPage = () => {
@@ -11,6 +12,8 @@ const ProductPage = () => {
   const data = product["0"]
 
   return (
+    <>
+      <Header/> 
     <div className='container mx-auto p-4'>
       <div className='Images flex flex-wrap'>
         <div className='w-full md:w-1/2'>
@@ -45,6 +48,8 @@ const ProductPage = () => {
         </div>   
       </div>
     </div>
+    
+    </>
   );
 };
 
