@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ContainerImageButtons = () => {
+const ContainerImageButtons = ({children}) => {
   return (
-    <div>
-      
+    <div className='flex justify-center space-x-2'>
+      {children}
     </div>
   )
 }
