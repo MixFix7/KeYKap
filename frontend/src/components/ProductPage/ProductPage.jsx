@@ -17,20 +17,21 @@ const ProductPage = () => {
             {product.map((image, index) => 
               <ProductImages key={index} image={image.specs.image}/>      
             )}
-        </div>
-        <div className='flex justify-center space-x-2'>
-              <button className='border border-gray-300 px-1 py-1 rounded'>
-                <img src="http://127.0.0.1:8000//media/image_products/maxresdefault.jpg" alt="image_1" />
-              </button>
-              <button className='border border-gray-300 px-1 py-1 rounded'>
-                <img src="http://127.0.0.1:8000//media/image_products/maxresdefault.jpg" alt="image_1" />
-              </button>
-              <button className='border border-gray-300 px-1 py-1 rounded'>
-                <img src="http://127.0.0.1:8000//media/image_products/maxresdefault.jpg" alt="image_1" />
-              </button>
-              <button className='border border-gray-300 px-1 py-1 rounded'>
-                <img src="http://127.0.0.1:8000//media/image_products/maxresdefault.jpg" alt="image_1" />
-              </button>
+        
+          <div className='flex justify-center space-x-2'>
+            <button className='border border-gray-300 w-1/4 py-2 rounded'>
+              <img src="http://127.0.0.1:8000//media/image_products/maxresdefault.jpg" alt="image_1" />
+            </button>
+            <button className='border border-gray-300 w-1/4 py-2 rounded'>
+              <img src="http://127.0.0.1:8000//media/image_products/maxresdefault.jpg" alt="image_1" />
+            </button>
+            <button className='border border-gray-300 w-1/4 py-2 rounded'>
+              <img src="http://127.0.0.1:8000//media/image_products/maxresdefault.jpg" alt="image_1" />
+            </button>
+            <button className='border border-gray-300 w-1/4 py-2 rounded'>
+              <img src="http://127.0.0.1:8000//media/image_products/maxresdefault.jpg" alt="image_1" />
+            </button>
+          </div>
         </div>
       </div>
       <div className='Label flex justify-start'>
