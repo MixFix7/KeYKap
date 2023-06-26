@@ -6,7 +6,6 @@ export const ImageButton = ({image, index}) => {
       <button className='border border-gray-300 w-1/4 py-2 rounded'>
           <img src={`http://127.0.0.1:8000/${image}`} alt={`image_${index}`} />
       </button>
-
     </>
   )
 }

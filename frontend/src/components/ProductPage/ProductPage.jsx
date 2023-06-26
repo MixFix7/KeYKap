@@ -14,9 +14,9 @@ const ProductPage = () => {
   return (
     <>
       <Header/> 
-      <div className='container mx-auto p-4'>     
+      <div className='container mx-auto p-4'> 
+        <div className='flex flex-wrap'>    
         <ProductImages image_buttons={product} image={data.specs.image} />
-
       
           <div className='w-full md:w-1/2'>
             <div className='flex flex-col h-full justify-start ml-4'>
@@ -29,6 +29,7 @@ const ProductPage = () => {
             </div>
           </div>
         </div>
+      </div>
     </>
   );
 };

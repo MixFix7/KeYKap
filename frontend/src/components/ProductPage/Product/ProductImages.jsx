@@ -6,7 +6,6 @@ import { ImageButton } from './ImageButton';
 export const ProductImages = ({image_buttons, image}) => {
 
   return (
-    <div className='flex flex-wrap'>
         <div className='w-full md:w-1/2'>
             <div className='flex flex-col h-full'>
                 <div className='mb-4'>
@@ -19,6 +18,5 @@ export const ProductImages = ({image_buttons, image}) => {
                 </ContainerImageButtons>
             </div>
         </div>
-    </div>
   )
 }
