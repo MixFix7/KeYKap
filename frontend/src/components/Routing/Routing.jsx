@@ -4,10 +4,17 @@ import Product from "../Home/NewProduct/Product";
 import ProductPage from './../ProductPage/ProductPage';
 import axios from 'axios';
 import MainBar from "../Home/Bars/MainBar";
+import RegisterPage from "../Authorization/RegisterPage";
+
+const urls = {
+    Home: '/',
+    Product: '/product/:name',
+    Registration: '/auth/reg'
+}
 
 const router = createBrowserRouter([
     {
-        path: '/',
+        path: urls.Home,
         element: <Home/>,
         loader: async ({request}) => {
             try {
@@ -20,7 +27,7 @@ const router = createBrowserRouter([
         }}
     },
     {
-        path: '/product/:name',
+        path: urls.Product,
         element: <ProductPage/>,
         loader: async ({params, request}) => {
             try {
@@ -32,7 +39,12 @@ const router = createBrowserRouter([
                 return null
             }
         }
+    },
+    {
+        path: urls.Registration,
+        element: <RegisterPage/>,
     }
+    
 ])
 
 
