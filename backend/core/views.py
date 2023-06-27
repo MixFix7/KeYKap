@@ -40,7 +40,6 @@ class AllProductsInCategory(APIView):
 
 class OneProduct(APIView):
     def get(self, request, name):
-        print(name)
         product = Product.objects.get(name=name)
         product_serialize = InfoProductSerializer(product)
         return Response(product_serialize.data)
