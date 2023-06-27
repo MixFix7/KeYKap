@@ -4,6 +4,6 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    # path('/registration'),
-    # path('/login'),
+    path('/registration'),
+    path('/login'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
