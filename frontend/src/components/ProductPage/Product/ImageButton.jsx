@@ -1,10 +1,16 @@
 import React from 'react'
 
-export const ImageButton = ({image, index}) => {
+export const ImageButton = ({img, index, onClick}) => {
   return (
     <>
-      <button className='border border-gray-300 w-1/4 py-2 rounded'>
-          <img src={`http://127.0.0.1:8000${image}`} alt={`image_${index}`} />
+      <button 
+        className='border border-gray-300 w-1/4 py-2 rounded'
+        onClick={() => onClick(img)} 
+      >
+          <img 
+            src={`http://127.0.0.1:8000${img}`} 
+            alt={`image_${index}`} 
+          />
       </button>
     </>
   )

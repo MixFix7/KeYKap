@@ -16,8 +16,13 @@ const ProductPage = () => {
       <Header/> 
       <div className='container mx-auto p-4'> 
         <div className='flex flex-wrap'>    
-          <ProductImages image_buttons={product} image={product[0].photos[0].photo} />
-          <ContainerDescription data={product[0]}/>
+          <ProductImages 
+            image_buttons={product} 
+            image={product[0].photos[0].photo}
+          />
+          <ContainerDescription 
+            data={product[0]}
+          />
         </div>
       </div>
     </>
