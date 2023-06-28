@@ -2,27 +2,27 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    max-width: 2150px; /* Максимальна ширина контейнера, вирахована як 430px * 5 */
-    margin: 0 auto; /* Центруємо контейнер на сторінці */
+    max-width: 2150px; 
+    margin: 0 auto; 
   }
   
   .product {
-    flex: 0 0 20%; /* Змінюємо гнучкість елементів, щоб встановити 20% ширини на рядок */
-    max-width: 20%; /* Змінюємо максимальну ширину елементів на 20% */
-    height: 400px; /* Змініть висоту продукту за потреби */
-    padding: 20px; /* Додаємо проміжок між продуктами */
+    flex: 0 0 20%; 
+    max-width: 20%; 
+    height: 400px; 
+    padding: 20px; 
   }
   
   @media screen and (max-width: 860px) {
     .product {
-      flex-basis: 25%; /* Змінюємо ширину елементів на 25% при ширині екрана менше 860px */
+      flex-basis: 25%; 
       max-width: 25%;
     }
   }
   
   @media screen and (max-width: 640px) {
     .product {
-      flex-basis: 50%; /* Змінюємо ширину елементів на 50% при ширині екрана менше 640px */
+      flex-basis: 50%; 
       max-width: 50%;
     }
   }

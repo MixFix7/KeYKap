@@ -10,7 +10,7 @@ const Product = (props) => {
     <div className={style.product}>
         <Link to={`/product/${props.name}/`}>
             <img 
-              className={style.image}
+              className={style.image} style={{height: '200px', width: '400px'}}
               src={`http://127.0.0.1:8000/${props.img}`}
               alt={props.name} 
             />
