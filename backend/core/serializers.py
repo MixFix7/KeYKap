@@ -8,6 +8,12 @@ class ProductSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class ProductPhotoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ProductPhoto
+        fields = ['photo']
+
+
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
@@ -28,17 +34,21 @@ class KeyboardSpecsSerializer(SpecsSerializer):
 
 class InfoProductSerializer(serializers.ModelSerializer):
     specs = serializers.SerializerMethodField()
+    photos = serializers.SerializerMethodField()
 
     def get_specs(self, product):
         specs = KeyboardSpecs.objects.get(product=product)
         serializer = KeyboardSpecsSerializer(specs)
         return serializer.data
 
-
+    def get_photos(self, product):
+        photos = ProductPhoto.objects.filter(product=product)
+        serializer = ProductPhotoSerializer(photos, many=True)
+        return serializer.data
 
     class Meta:
         model = Product
-        fields = ['id', 'name', 'category', 'price', 'specs']
+        fields = ['id', 'name', 'category', 'price', 'photos', 'specs']
 
 
 class CategoryProductsSerializer(serializers.ModelSerializer):
