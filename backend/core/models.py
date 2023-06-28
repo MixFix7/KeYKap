@@ -22,7 +22,17 @@ class ProductSpecs(models.Model):
     brand = models.CharField(max_length=30)
     description = models.TextField()
     color = models.CharField(max_length=15, null=True, blank=True)
-    image = models.ImageField(upload_to='image_products', null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.product} specs"
+
+
+class ProductPhoto(models.Model):
+    product = models.ForeignKey(Product, default=None, on_delete=models.CASCADE)
+    photo = models.FileField(upload_to='image_products/')
+
+    def __str__(self):
+        return f"{self.product} photo {self.photo.path}"
 
 
 class KeyboardSpecs(ProductSpecs):

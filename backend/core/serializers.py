@@ -34,6 +34,8 @@ class InfoProductSerializer(serializers.ModelSerializer):
         serializer = KeyboardSpecsSerializer(specs)
         return serializer.data
 
+
+
     class Meta:
         model = Product
         fields = ['id', 'name', 'category', 'price', 'specs']
