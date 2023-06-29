@@ -36,7 +36,7 @@ const Product = (props) => {
         {props.name}
       </h1>
       <h2 className='text-xl font-bold text-white'>
-        ${props.price}
+        ${props.price} 
       </h2>
     </div>
   )

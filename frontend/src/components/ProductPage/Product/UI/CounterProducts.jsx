@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from 'react'
 
-const CounterProducts = () => {
+const CounterProducts = ({onDataChange}) => {
     const [count, setCount] = useState(1);
   
     const increment = () => {
-      if (count !== 99) setCount(count + 1);
-    };
+      if (count !== 99) {
+        setCount(count + 1) 
+    }};
   
     const decrement = () => {
-        if (count !== 1) setCount(count - 1);
-    };
+        if (count !== 1) {
+          setCount(count - 1);
+    }};
+
+    useEffect(() => {
+        onDataChange(count)
+    }, [count, onDataChange])
+
 
   return (
-    <div className="bg-gray-800 flex items-center justify-center p-2 rounded-lg border-solid border-gray-50 border ">
+    <div className="bg-gray-800 flex items-center justify-center 
+                    p-2 rounded-lg border-solid border-gray-50 border mr-2 "
+    >
     <div className="">
       <button
         className="px-3 py-2 text-white"

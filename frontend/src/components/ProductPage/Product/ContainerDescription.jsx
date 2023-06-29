@@ -1,19 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CounterProducts from './UI/CounterProducts';
+import AddToCartButton from './UI/AddToCartButton';
+import { TextInformationProdcut } from './TextInformationProdcut';
 
 const ContainerDescription = ({data}) => {
+    const [price, setPrice] = useState(data.price)
+
+    const updatePriceByCounterProducts = (newPrice) => {
+      console.log(newPrice)
+      setPrice(data.price * newPrice)
+    }
+
   return (
     <div className='w-full md:w-1/2'>
         <div className='flex flex-col h-full justify-start ml-4'>
-            <h1 className='text-white text-2xl font-bold mb-2'>{data.name}</h1>
-            <pre className='text-gray-200 font-bold mb-2' style={{ maxWidth: '700px', minHeight: '439px' , whiteSpace: 'pre-wrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{data.specs.description}</pre>
-            <h1 className='text-white text-6xl mb-3'>${data.price}</h1>
-            <div className='flex'>
-              <CounterProducts/>
-              <button className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg'>
-                Add to cart
-              </button>
-            </div>
+            <TextInformationProdcut data={data} price={price}/>
+          <div className='flex'>
+            <CounterProducts onDataChange={updatePriceByCounterProducts}/>
+            <AddToCartButton/>
+          </div>
         </div>
     </div>
   )
