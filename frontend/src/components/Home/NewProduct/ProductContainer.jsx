@@ -11,7 +11,9 @@ const ProductContainer = ({json}) => {
             key={product.id}
             id={product.id}
             name={product.name}
-            img={product.photos[0].photo}
+            img1={product.photos[0].photo}
+            img2={product.photos[1].photo}
+            price={product.price}
           />
         ))}
       </div>
