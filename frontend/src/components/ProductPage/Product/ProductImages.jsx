@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import style from './../../../static/ProductImage.module.css'
 import ContainerImageButtons from './ContainerImageButtons';
 import { ImageButton } from './ImageButton';
 import { ContainerImages } from './ContainerImages';
