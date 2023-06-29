@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import ContainerImageButtons from './ContainerImageButtons';
-import { ImageButton } from './ImageButton';
+import { ImageButton } from './UI/ImageButton';
 import { ContainerImages } from './ContainerImages';
 
 export const ProductImages = ({image_buttons, image}) => {
