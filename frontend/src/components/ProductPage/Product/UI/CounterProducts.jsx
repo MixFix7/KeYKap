@@ -4,7 +4,7 @@ const CounterProducts = () => {
     const [count, setCount] = useState(1);
   
     const increment = () => {
-      setCount(count + 1);
+      if (count !== 99) setCount(count + 1);
     };
   
     const decrement = () => {
@@ -12,10 +12,10 @@ const CounterProducts = () => {
     };
 
   return (
-    <div className="bg-gray-800 flex items-center justify-center p-2 rounded-lg border-solid border-gray-50 border mr-3">
+    <div className="bg-gray-800 flex items-center justify-center p-2 rounded-lg border-solid border-gray-50 border ">
     <div className="">
       <button
-        className="px-4 py-2 text-white"
+        className="px-3 py-2 text-white"
         onClick={decrement}
       >
         <h1>-</h1>
@@ -29,7 +29,7 @@ const CounterProducts = () => {
     </div>
     <div>
       <button
-        className="px-4 py-2 text-white text-xl"
+        className="px-3 py-2 text-white text-xl"
         onClick={increment}
       >
         <h1>+</h1>
