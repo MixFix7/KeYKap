@@ -1,2 +1,2 @@
 # KeYKap
-KeYKap - the keyboard shop site on django and react.
+KeYKap - the keyboard online shop on django and react.
