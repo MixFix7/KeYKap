@@ -4,12 +4,14 @@ import Product from "../Home/NewProduct/Product";
 import ProductPage from './../ProductPage/ProductPage';
 import axios from 'axios';
 import MainBar from "../Home/Bars/MainBar";
-import RegisterPage from "../Authorization/RegisterPage";
+import LoginPage from './../Authorization/Register/LogInPage';
+
 
 const urls = {
     Home: '/',
     Product: '/product/:name',
-    Registration: '/auth/reg'
+    Registration: '/auth/reg',
+    LogIn: '/auth/login'
 }
 
 const router = createBrowserRouter([
@@ -42,7 +44,7 @@ const router = createBrowserRouter([
     },
     {
         path: urls.Registration,
-        element: <RegisterPage/>,
+        element: <LoginPage/>,
     }
     
 ])

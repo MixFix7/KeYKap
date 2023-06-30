@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from .serializers import *
 from rest_framework.response import Response
 from django.contrib.auth import login, authenticate
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 
 class Registration(APIView):
@@ -26,6 +27,10 @@ class Login(APIView):
             return Response({'message': "Login was successful"}, status=201)
 
         return Response({'message': "Wrong username/email or password"})
+
+
+class MyTokenObtainPairView(TokenObtainPairView):
+    serializer_class = MyTokenObtainPairSerializer
 
 
 

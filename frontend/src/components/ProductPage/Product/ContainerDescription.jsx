@@ -7,7 +7,6 @@ const ContainerDescription = ({data}) => {
     const [price, setPrice] = useState(data.price)
 
     const updatePriceByCounterProducts = (newPrice) => {
-      console.log(newPrice)
       setPrice(data.price * newPrice)
     }
 
