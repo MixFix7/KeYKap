@@ -1,5 +1,5 @@
 import React from 'react'
-import style from './../../static/AvatarSignUp.module.css'
+import style from './../../../static/AvatarSignUp.module.css'
 
 const SelectAvatar = () => {
   return (

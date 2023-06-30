@@ -6,6 +6,8 @@ import axios from 'axios';
 import MainBar from "../Home/Bars/MainBar";
 import LoginPage from '../Authorization/LogInPage';
 import SignUpPage from "../Authorization/SignUpPage";
+import SelectAvatar from "../Authorization/UI/SelectAvatar.jsx";
+import AvatarSelectPage from "../Authorization/AvatarSelectPage";
 
 
 export const urls = {
@@ -16,7 +18,7 @@ export const urls = {
     Contacts: '/contacts',
     SignUp: '/auth/sign-up',
     LogIn: '/auth/log-in',
-    SelectAvatar: 'auth/sign-up/select-avatar',
+    SelectAvatar: '/auth/sign-up/select-avatar',
 }
 
 const router = createBrowserRouter([
@@ -47,6 +49,7 @@ const router = createBrowserRouter([
             }
         }
     },
+        // AUTHORIZATION
     {
         path: urls.SignUp,
         element: <SignUpPage/>
@@ -55,7 +58,10 @@ const router = createBrowserRouter([
         path: urls.LogIn,
         element: <LoginPage/>,
     },
-    
+    {
+        path: urls.SelectAvatar,
+        element: <AvatarSelectPage/>
+    }
 ])
 
 

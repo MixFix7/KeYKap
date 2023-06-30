@@ -1,6 +1,7 @@
 import React from 'react'
 import style from './../../static/AuthPage.module.css'
-import SelectAvatar from './UI/SelectAvatarjsx'
+import SelectAvatar from './UI/SelectAvatar.jsx'
+import { NavLink } from 'react-router-dom'
 
 const AvatarSelectPage = () => {
   return (
@@ -9,8 +10,8 @@ const AvatarSelectPage = () => {
             <h1 className={style.login}>Select Avatar</h1>
             
             <SelectAvatar/>
-
-            <button type='submit' className={style.enter}>Confirm</button>
+            
+            <NavLink to='/' className={style.enter}>Confirm</NavLink>
 
         </div>
     </div>
