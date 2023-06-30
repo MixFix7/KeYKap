@@ -8,7 +8,6 @@ export const ProductImages = ({image_buttons, image}) => {
 
     const changeImgButton = (img) => {
         if (img !== mainImg) {
-            console.log(img)
             setMainTmg(img)
         }
     }
