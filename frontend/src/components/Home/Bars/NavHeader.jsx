@@ -7,7 +7,7 @@ const NavHeader = () => {
   let {user, logoutUser} = useContext(AuthContext)
   return (
     <nav>
-      <div className='flex text-white mr-5'>
+      <div className='flex items-center text-white mr-5'>
             <Link className='mr-6 text-2xl' to={urls.Home}>Main</Link>
             <Link className='mr-6 text-2xl' to={urls.Products}>Products</Link>
             <Link className='mr-6 text-2xl' to={urls.AboutUs}>About us</Link>
@@ -20,7 +20,20 @@ const NavHeader = () => {
               <Link className='mr-6 text-2xl' to={urls.SignUp}>Sign up</Link>
             ) }
 
-             {user && <p>{user.username}</p>}
+             {user && (
+              <>
+                <p className='mr-6 text-2xl'>{user.username}</p>
+                <img 
+                  src={`http://127.0.0.1:8000${user.avatar}`}
+                  className='rounded-full'
+                  style={{width: '75px', height: '75px'}}
+                  alt='' 
+                />
+              </>
+             )
+            }
+
+             
         </div>
     </nav>
   )
