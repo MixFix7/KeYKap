@@ -5,13 +5,18 @@ import ProductPage from './../ProductPage/ProductPage';
 import axios from 'axios';
 import MainBar from "../Home/Bars/MainBar";
 import LoginPage from '../Authorization/LogInPage';
+import SignUpPage from "../Authorization/SignUpPage";
 
 
-const urls = {
+export const urls = {
     Home: '/',
     Product: '/product/:name',
-    Registration: '/auth/reg',
-    LogIn: '/auth/login'
+    Products: '/products',
+    AboutUs: '/about-us',
+    Contacts: '/contacts',
+    SignUp: '/auth/sign-up',
+    LogIn: '/auth/log-in',
+    SelectAvatar: 'auth/sign-up/select-avatar',
 }
 
 const router = createBrowserRouter([
@@ -43,9 +48,13 @@ const router = createBrowserRouter([
         }
     },
     {
-        path: urls.Registration,
+        path: urls.SignUp,
+        element: <SignUpPage/>
+    },
+    {
+        path: urls.LogIn,
         element: <LoginPage/>,
-    }
+    },
     
 ])
 

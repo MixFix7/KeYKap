@@ -67,6 +67,8 @@
   border: 2px;
 }
 
+
+
 .inputBox input:valid,
 .inputBox input:focus {
   border: 2px solid #000;
