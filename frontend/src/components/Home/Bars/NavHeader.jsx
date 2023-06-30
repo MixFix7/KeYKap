@@ -4,7 +4,7 @@ import { urls } from '../../Routing/Routing'
 import { AuthContext } from '../../Authorization/AuthContext'
 
 const NavHeader = () => {
-  let {user} = useContext(AuthContext)
+  let {user, logoutUser} = useContext(AuthContext)
   return (
     <nav>
       <div className='flex text-white mr-5'>
@@ -15,7 +15,7 @@ const NavHeader = () => {
             {/* <Link className='mr-6 text-2xl' to={urls.SignUp}>Sign up</Link> */}
 
             {user ? (
-              <p className='mr-6 text-2xl'>Log out</p>
+              <button onClick={logoutUser} className='mr-6 text-2xl'>Log out</button>
             ): (
               <Link className='mr-6 text-2xl' to={urls.SignUp}>Sign up</Link>
             ) }

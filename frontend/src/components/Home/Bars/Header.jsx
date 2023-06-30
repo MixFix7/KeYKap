@@ -11,8 +11,6 @@ const Header = () => {
         <div className='flex items-center justify-between text-white'>
             <Logo/>
             <NavHeader/>
-
-            {user && <p>{user.username}</p>}
         </div>
     </header>
   )
