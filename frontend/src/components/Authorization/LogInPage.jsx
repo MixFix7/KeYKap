@@ -1,16 +1,19 @@
-import React, { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import style from './../../static/AuthPage.module.css'
 import InputAuth from './UI/InputAuth';
 import { HaveAccount } from './UI/HaveAccount';
 import { AuthContext } from './AuthContext';
 
 const LoginPage = () => {
-  let {loginUser} = useContext(AuthContext)
+  let {loginUser, user} = useContext(AuthContext)
+
+  const navigate = useNavigate()
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
     loginUser(event)
+    navigate('/')
   }
 
   return (

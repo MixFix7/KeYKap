@@ -1,15 +1,16 @@
 import axios from "axios";
 import { createContext, useState, useEffect } from "react";
 import {decodeToken} from 'react-jwt'
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
+import { useJwt } from "react-jwt";
+
 
 export const AuthContext = createContext()
 
 
 export const AuthProvider = ({ children }) => {
-    localStorage.getItem('authToken')
-    const [authTokens, setAuthTokens] = useState(null);
-    const [user, setUser] = useState(null);
+    let [authTokens, setAuthTokens] = useState(()=>localStorage.getItem('authTokens') ? JSON.parse(localStorage.getItem('authTokens')) : null)
+    let [user, setUser] = useState(()=>localStorage.getItem('authTokens') ? decodeToken(JSON.parse(localStorage.getItem('authTokens')).access) : null)
   
     const loginUser = async (event) => {
       event.preventDefault();
@@ -27,7 +28,7 @@ export const AuthProvider = ({ children }) => {
       if (response.status === 200) {
         setAuthTokens(data);
         setUser(decodeToken(data.access))
-        localStorage.setItem('authTokens',JSON.stringify(data))
+        localStorage.setItem('authTokens', JSON.stringify(data))
       } else {
         alert('Something went wrong!');
       }
