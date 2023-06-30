@@ -4,7 +4,7 @@ import Product from "../Home/NewProduct/Product";
 import ProductPage from './../ProductPage/ProductPage';
 import axios from 'axios';
 import MainBar from "../Home/Bars/MainBar";
-import LoginPage from './../Authorization/Register/LogInPage';
+import LoginPage from '../Authorization/LogInPage';
 
 
 const urls = {

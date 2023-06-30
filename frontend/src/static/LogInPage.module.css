@@ -11,19 +11,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 350px;
-  width: 300px;
+  min-height: 750px;
+  width: 500px;
   flex-direction: column;
   gap: 35px;
-  background: #e3e3e3;
-  box-shadow: 16px 16px 32px #c8c8c8,
-        -16px -16px 32px #fefefe;
+  background: #3E84A3;
+  box-shadow: 16px 16px 32px #38718a,
+        -16px -16px 32px #3E84A3;
   border-radius: 8px;
 }
 
 .inputBox {
   position: relative;
-  width: 250px;
+  width: 350px;
 }
 
 .inputBox input {
@@ -58,7 +58,7 @@
 
 .inputBox input:valid~span,
 .inputBox input:focus~span {
-  transform: translateX(113px) translateY(-15px);
+  transform: translateX(220px) translateY(-15px);
   font-size: 0.8em;
   padding: 5px 10px;
   background: #000;
@@ -74,22 +74,22 @@
 }
 
 .enter {
-  height: 45px;
-  width: 100px;
+  height: 55px;
+  width: 150px;
   border-radius: 5px;
   border: 2px solid #000;
   cursor: pointer;
   background-color: transparent;
   transition: 0.5s;
   text-transform: uppercase;
-  font-size: 10px;
+  font-size: 20px;
   letter-spacing: 2px;
   margin-bottom: 1em;
 }
 
 .enter:hover {
   background-color: rgb(0, 0, 0);
-  color: white;
+  color: #3E84A3;
 }
   
   

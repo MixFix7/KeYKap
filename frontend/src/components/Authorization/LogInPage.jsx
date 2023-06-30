@@ -1,11 +1,11 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import style from './../../../static/LogInPage.module.css'
+import style from './../../static/LogInPage.module.css'
 
 const LoginPage = () => {
   return (
     
-    <div className={style.container}>
+    <div className={`${style.container} flex items-center justify-center h-screen`}>
         <div className={style.card}>
             <h1 className={style.login}>Log in</h1>
             <div className={style.inputBox}>
@@ -18,7 +18,7 @@ const LoginPage = () => {
                 <span>Password</span>
             </div>
 
-            <button className={style.enter}>Enter</button>
+            <button type='submit' className={style.enter}>Enter</button>
 
         </div>
     </div>
