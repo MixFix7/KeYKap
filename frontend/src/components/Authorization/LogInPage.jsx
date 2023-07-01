@@ -6,14 +6,11 @@ import { HaveAccount } from './UI/HaveAccount';
 import { AuthContext } from './AuthContext';
 
 const LoginPage = () => {
-  let {loginUser, user} = useContext(AuthContext)
-
-  const navigate = useNavigate()
+  let {loginUser} = useContext(AuthContext)
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
     loginUser(event)
-    navigate('/')
   }
 
   return (

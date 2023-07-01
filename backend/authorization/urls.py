@@ -7,5 +7,5 @@ from rest_framework_simplejwt.views import TokenRefreshView, TokenObtainPairView
 urlpatterns = [
     path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    path('token/singup/', SingUpJWT.as_view(), name='token_singup')
+    path('token/signup/', SignUpJWT.as_view(), name='token_signup')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

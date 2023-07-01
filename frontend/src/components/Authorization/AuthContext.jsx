@@ -1,9 +1,5 @@
-import axios from "axios";
 import { createContext, useState, useEffect } from "react";
 import {decodeToken} from 'react-jwt'
-import { redirect, useNavigate } from "react-router-dom";
-import { useJwt } from "react-jwt";
-
 
 export const AuthContext = createContext()
 
@@ -37,22 +33,22 @@ export const AuthProvider = ({ children }) => {
       }
     };
 
-    const singupUser = async(event) => {
+    const signupUser = async(event) => {
       event.preventDefault()
-      const formData = new FormData()
-      formData.append('avatar', event.target.avatar.value)
-      const response = await fetch('http://127.0.0.1:8000/auth/token/singup/', {
+
+      const formData = new FormData();
+      formData.append('avatar', event.target.avatar.files[0]);
+      formData.append('username', event.target.username.value);
+      formData.append('email', event.target.email.value);
+      formData.append('password', event.target.password.value);
+      
+      const response = await fetch('http://127.0.0.1:8000/auth/token/signup/', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          body: JSON.stringify({
-            'username': event.target.username.value,
-            'email': event.target.email.value,
-            'password': event.target.password.value,
-            formData,
-          })}
-      })
+        body: formData,
+      });
+
       const data = await response.json()
+
       if (response.status === 200) {
         setAuthTokens(data)
         setUser(decodeToken(data.access))
@@ -70,6 +66,7 @@ export const AuthProvider = ({ children }) => {
     }
 
     const updateToken = async() => {
+      console.log('Update')
         const response = await fetch('http://127.0.0.1:8000/auth/token/refresh/', {
             method: 'POST',
             headers: {
@@ -92,7 +89,7 @@ export const AuthProvider = ({ children }) => {
       user: user,
       loginUser: loginUser,
       logoutUser: logoutUser,
-      singupUser: singupUser
+      signupUser: signupUser,
     };
 
     useEffect(() => {

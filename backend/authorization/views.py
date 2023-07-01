@@ -9,23 +9,24 @@ from django.contrib.auth.models import User
 from .models import *
 
 
-class SingUpJWT(APIView):
+class SignUpJWT(APIView):
     def post(self, request):
         username = request.data.get('username')
-        email = request.data.get('username')
+        email = request.data.get('email')
         password = request.data.get('password')
-        avatar = request.FILES['avatar']
+        avatar = request.FILES.get('avatar')
 
         user = User.objects.create_user(username=username, email=email, password=password)
         profile = Profile.objects.create(user=user, avatar=avatar)
+        profile.save()
 
-        refresh = RefreshToken.for_user(user)
-        token = {
-            'refresh': str(refresh),
-            'access': str(refresh.access_token),
-        }
+        refresh_token = RefreshToken.for_user(user)
+        access_token = MyTokenObtainPairSerializer.get_token(user)
 
-        return Response(token)
+        return Response({
+            'refresh': str(refresh_token),
+            'access': str(access_token.token)
+        })
 
 
 class MyTokenObtainPairView(TokenObtainPairView):
