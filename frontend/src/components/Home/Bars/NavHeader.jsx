@@ -8,8 +8,18 @@ const NavHeader = () => {
   return (
     <nav>
       <div className='flex items-center text-white mr-5'>
-            <Link className='mr-6 text-2xl' to={urls.Home}>Main</Link>
-            <Link className='mr-6 text-2xl' to={urls.Products}>Products</Link>
+        {user && (
+          <>
+            <Link className='mr-6 text-2xl' to={`/cart/${user.username}`}>
+              <img 
+                className='mr-2' 
+                style={{width: '45px', height: '45px', filter: 'invert(100%)'}}
+                src="http://127.0.0.1:8000/media/website_images/cart.png"
+                alt="cart"
+              />
+            </Link> 
+          </>
+        )}
             <Link className='mr-6 text-2xl' to={urls.AboutUs}>About us</Link>
             <Link className='mr-6 text-2xl' to={urls.Contacts}>Contacts</Link>
             {/* <Link className='mr-6 text-2xl' to={urls.SignUp}>Sign up</Link> */}

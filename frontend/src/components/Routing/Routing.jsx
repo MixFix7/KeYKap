@@ -8,11 +8,13 @@ import LoginPage from '../Authorization/LogInPage';
 import SignUpPage from "../Authorization/SignUpPage";
 import SelectAvatar from "../Authorization/UI/SelectAvatar.jsx";
 import AvatarSelectPage from "../Authorization/AvatarSelectPage";
+import CartPage from "../Cart/CartPage";
 
 
 export const urls = {
     Home: '/',
     Product: '/product/:name',
+    Cart: '/cart/:username',
     Products: '/products',
     AboutUs: '/about-us',
     Contacts: '/contacts',
@@ -48,6 +50,10 @@ const router = createBrowserRouter([
                 return null
             }
         }
+    },
+    {
+        path: urls.Cart,
+        element: <CartPage/>
     },
         // AUTHORIZATION
     {
