@@ -31,10 +31,37 @@ export const AuthProvider = ({ children }) => {
         setAuthTokens(data);
         setUser(decodeToken(data.access))
         localStorage.setItem('authTokens', JSON.stringify(data))
+        window.location.href = '/'
       } else {
         alert('Something went wrong!');
       }
     };
+
+    const singupUser = async(event) => {
+      event.preventDefault()
+      const formData = new FormData()
+      formData.append('avatar', event.target.avatar.value)
+      const response = await fetch('http://127.0.0.1:8000/auth/token/singup/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          body: JSON.stringify({
+            'username': event.target.username.value,
+            'email': event.target.email.value,
+            'password': event.target.password.value,
+            formData,
+          })}
+      })
+      const data = await response.json()
+      if (response.status === 200) {
+        setAuthTokens(data)
+        setUser(decodeToken(data.access))
+        localStorage.setItem('authTokens', JSON.stringify(data))
+        window.location.href = '/'
+      } else {
+        alert('Something went wrong')
+      }
+    }
 
     const logoutUser = () => {
         setAuthTokens(null)
@@ -43,7 +70,6 @@ export const AuthProvider = ({ children }) => {
     }
 
     const updateToken = async() => {
-        console.log('Update Token')
         const response = await fetch('http://127.0.0.1:8000/auth/token/refresh/', {
             method: 'POST',
             headers: {
@@ -66,14 +92,17 @@ export const AuthProvider = ({ children }) => {
       user: user,
       loginUser: loginUser,
       logoutUser: logoutUser,
+      singupUser: singupUser
     };
 
     useEffect(() => {
 
         let interval = setInterval(()=> {
-            if (authTokens)
-            updateToken()
-        }, 2000)
+            if (authTokens) {
+                updateToken()
+            }
+                
+        }, 40000)
         return ()=> clearInterval(interval)
 
     }, [authTokens, loading])
