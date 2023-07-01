@@ -63,3 +63,11 @@ class AllProductsViewSet(APIView):
         return Response(serializer.data)
 
 
+class CartView(APIView):
+    def get(self, request, user):
+        cart = Cart.objects.filter(user=user)
+        cart_serializer = CartSerializer(cart)
+        return cart_serializer.data
+
+
+
