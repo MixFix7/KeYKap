@@ -8,6 +8,9 @@ const CartPage = () => {
   return (
     <>
         <Header/>
+        <div>
+            
+        </div>
     </>
   )
 }

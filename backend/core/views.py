@@ -61,3 +61,5 @@ class AllProductsViewSet(APIView):
         serializer = ProductSerializer(products)
         permission_classes = [IsAuthenticated]
         return Response(serializer.data)
+
+

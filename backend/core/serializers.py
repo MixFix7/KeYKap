@@ -62,3 +62,16 @@ class CategoryProductsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ['id', 'category', 'products']
+
+
+class CartSerializer(serializers.ModelSerializer):
+    productsInfo = serializers.SerializerMethodField()
+
+    def get_productsInfo(self, product):
+        products = product.objects.all()
+        product_serializer = ProductSerializer(products, many=True)
+        return product_serializer.data
+
+    class Meta:
+        model = Cart
+        fields = ['id', 'productsInfo']
