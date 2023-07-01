@@ -64,12 +64,32 @@ class CategoryProductsSerializer(serializers.ModelSerializer):
         fields = ['id', 'category', 'products']
 
 
+class InfoProductCartSerializer(serializers.ModelSerializer):
+    specs = serializers.SerializerMethodField()
+    photos = serializers.SerializerMethodField()
+
+    def get_specs(self, cart):
+        product = cart.product
+        specs = KeyboardSpecs.objects.get(product=product)
+        serializer = KeyboardSpecsSerializer(specs)
+        return serializer.data
+
+    def get_photos(self, cart):
+        product = cart.product
+        photos = ProductPhoto.objects.filter(product=product)
+        serializer = ProductPhotoSerializer(photos, many=True)
+        return serializer.data
+
+    class Meta:
+        model = Product
+        fields = ['id', 'name', 'photos', 'specs']
+
+
 class CartSerializer(serializers.ModelSerializer):
     productsInfo = serializers.SerializerMethodField()
 
-    def get_productsInfo(self, product):
-        products = Product.objects.all()
-        product_serializer = ProductSerializer(products, many=True)
+    def get_productsInfo(self, cart):
+        product_serializer = InfoProductSerializer(cart.product)
         return product_serializer.data
 
     class Meta:

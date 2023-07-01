@@ -55,8 +55,9 @@ const router = createBrowserRouter([
         path: urls.Cart,
         element: <CartPage/>,
         loader: async ({params, request}) => {
-            const response = await axios.get(`http://localhost:8000/api/cart/${params.username}/`)
-            return {cart: response.data}
+            const response = await fetch(`http://localhost:8000/api/cart/${params.username}/`
+            ).then((response) => response.json())
+            return response
         }
     },
         // AUTHORIZATION
