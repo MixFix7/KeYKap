@@ -53,7 +53,11 @@ const router = createBrowserRouter([
     },
     {
         path: urls.Cart,
-        element: <CartPage/>
+        element: <CartPage/>,
+        loader: async ({params, request}) => {
+            const response = await axios.get(`http://localhost:8000/api/cart/${params.username}/`)
+            return {cart: response.data}
+        }
     },
         // AUTHORIZATION
     {

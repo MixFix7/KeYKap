@@ -65,9 +65,9 @@ class AllProductsViewSet(APIView):
 
 class CartView(APIView):
     def get(self, request, user):
-        cart = Cart.objects.filter(user=user)
+        cart = Cart.objects.filter(user__username=user)
         cart_serializer = CartSerializer(cart)
-        return cart_serializer.data
+        return Response(cart_serializer.data)
 
 
 

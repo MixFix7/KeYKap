@@ -68,7 +68,7 @@ class CartSerializer(serializers.ModelSerializer):
     productsInfo = serializers.SerializerMethodField()
 
     def get_productsInfo(self, product):
-        products = product.objects.all()
+        products = Product.objects.all()
         product_serializer = ProductSerializer(products, many=True)
         return product_serializer.data
 
