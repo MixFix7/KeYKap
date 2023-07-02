@@ -8,20 +8,37 @@ import axios from 'axios';
 
 
 const CartPage = () => {
-    const {user} = useContext(AuthContext)
-    const [cart, setCart] = useState(useLoaderData())
+  const { user } = useContext(AuthContext);
+  const [cart, setCart] = useState([]);
 
-    const deleteProductFromCart = async (id) => {
-      const response = await axios.delete(`http://127.0.0.1:8000/api/cart/remove/${id}`)
-      setCart(prevCart => prevCart.filter(product => product.id !== id));
+  const fetchCartData = async () => {
+    try {
+      const response = await axios.get(`http://127.0.0.1:8000/api/cart/${user.username}/`);
+      setCart(response.data);
+    } catch (error) {
+      console.log(error);
     }
+  };
+
+  const deleteProductFromCart = async (idProduct) => {
+    try {
+      await axios.delete(`http://127.0.0.1:8000/api/cart/remove/${idProduct}/`);
+      fetchCartData(); // Оновлення даних після видалення продукту
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchCartData();
+  }, []);
 
   return (
     <>
-        <Header/>
-        <div>
+      <Header />
+      <div>
         {cart.map((product) => (
-          <div 
+          <div
             key={product.id}
             className='flex items-center'
           >
@@ -32,17 +49,18 @@ const CartPage = () => {
               img1={product.productsInfo.photos[0].photo}
               img2={product.productsInfo.photos[1].photo}
             />
-            <DeleteProductFromCartButton 
-              username={user.username} 
+            <DeleteProductFromCartButton
               idProduct={product.id}
-              onClick={deleteProductFromCart}
+              username={user.username}
+              onClick={() => deleteProductFromCart(product.id)}
             />
           </div>
         ))}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default CartPage
+export default CartPage;
+
  
