@@ -10,7 +10,7 @@ const NavHeader = () => {
       <div className='flex items-center text-white mr-5'>
         {user && (
           <>
-            <Link className='mr-6 text-2xl' to={`/cart/${user.username}`}>
+            <Link className='mr-6 text-2xl' to={`/cart`}>
               <img 
                 className='mr-2' 
                 style={{width: '45px', height: '45px', filter: 'invert(100%)'}}

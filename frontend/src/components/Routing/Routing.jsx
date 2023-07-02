@@ -15,7 +15,7 @@ import { loaderCart } from "./Loaders/CartPageLoader";
 export const urls = {
     Home: '/',
     Product: '/product/:name',
-    Cart: '/cart/:username',
+    Cart: '/cart',
     Products: '/products',
     AboutUs: '/about-us',
     Contacts: '/contacts',
@@ -55,11 +55,6 @@ const router = createBrowserRouter([
     {
         path: urls.Cart,
         element: <CartPage/>,
-        loader: async ({params, request}) => {
-            const response = await fetch(`http://localhost:8000/api/cart/${params.username}/`
-            ).then((response) => response.json())
-            return response
-        }
     },
         // AUTHORIZATION
     {

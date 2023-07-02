@@ -13,8 +13,17 @@ const CartPage = () => {
 
   const fetchCartData = async () => {
     try {
-      const response = await axios.get(`http://127.0.0.1:8000/api/cart/${user.username}/`);
-      setCart(response.data);
+      const response = await fetch(`http://127.0.0.1:8000/api/cart/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          'user': user.username
+        })
+      });
+      const data = await response.json()
+      setCart(data)
     } catch (error) {
       console.log(error);
     }
@@ -23,7 +32,7 @@ const CartPage = () => {
   const deleteProductFromCart = async (idProduct) => {
     try {
       await axios.delete(`http://127.0.0.1:8000/api/cart/remove/${idProduct}/`);
-      fetchCartData(); // Оновлення даних після видалення продукту
+      fetchCartData();
     } catch (error) {
       console.log(error);
     }

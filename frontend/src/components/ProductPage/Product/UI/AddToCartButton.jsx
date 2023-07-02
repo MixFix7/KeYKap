@@ -5,7 +5,7 @@ const AddToCartButton = ({data, count}) => {
   const {user} = useContext(AuthContext)
 
   const addProductToCart = async () => {
-      const response = await fetch(`http://localhost:8000/api/cart/${user.username}/`, {
+      const response = await fetch(`http://localhost:8000/api/cart/add/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -13,6 +13,7 @@ const AddToCartButton = ({data, count}) => {
         body: JSON.stringify({
             'product_name': data.name,
             'count': count,
+            'user': user.username,
         }),  
       })
       if (response.status === 201) {
