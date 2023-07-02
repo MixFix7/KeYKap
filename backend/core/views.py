@@ -3,6 +3,7 @@ from rest_framework.utils.serializer_helpers import ReturnDict
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from rest_framework import status
 from .models import *
 from .serializers import *
 
@@ -51,8 +52,8 @@ class AddProduct(APIView):
         serializer = InfoProductSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
-            return Response(serializer.data, status=201)
-        return Response(serializer.errors, status=400)
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 class AllProductsViewSet(APIView):
@@ -76,8 +77,17 @@ class CartView(APIView):
             product = Product.objects.get(name=product_name)
             user = User.objects.get(username=user)
             cart = Cart.objects.create(product=product, user=user)
+        return Response(status=status.HTTP_201_CREATED)
 
-        return Response(status=201)
+
+class DeleteCart(APIView):
+    def delete(self, request, cart_id):
+        try:
+            Cart.objects.get(id=cart_id).delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except Cart.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
 
 
 

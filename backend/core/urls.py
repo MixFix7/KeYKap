@@ -11,4 +11,6 @@ urlpatterns = [
     path("allProductsInCategory/<str:category_name>/products", AllProductsInCategory.as_view()),
     path("addProduct/", AddProduct.as_view()),
     path("cart/<str:user>/", CartView.as_view()),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path("cart/remove/<int:cart_id>/", DeleteCart.as_view())
+]
+

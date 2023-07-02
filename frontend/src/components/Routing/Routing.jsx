@@ -9,6 +9,7 @@ import SignUpPage from "../Authorization/SignUpPage";
 import SelectAvatar from "../Authorization/UI/SelectAvatar.jsx";
 import AvatarSelectPage from "../Authorization/AvatarSelectPage";
 import CartPage from "../Cart/CartPage";
+import { loaderCart } from "./Loaders/CartPageLoader";
 
 
 export const urls = {
@@ -54,11 +55,7 @@ const router = createBrowserRouter([
     {
         path: urls.Cart,
         element: <CartPage/>,
-        loader: async ({params, request}) => {
-            const response = await fetch(`http://localhost:8000/api/cart/${params.username}/`
-            ).then((response) => response.json())
-            return response
-        }
+        loader: loaderCart
     },
         // AUTHORIZATION
     {
