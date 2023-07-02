@@ -70,11 +70,12 @@ class CartView(APIView):
         return Response(cart_serializer.data)
 
     def post(self, request, user):
-
-        product_name = request.data.get('product_name')
-        product = Product.objects.get(name=product_name)
-        user = User.objects.get(username=user)
-        cart = Cart.objects.create(product=product, user=user)
+        count = request.data.get('count')
+        for _ in range(count):
+            product_name = request.data.get('product_name')
+            product = Product.objects.get(name=product_name)
+            user = User.objects.get(username=user)
+            cart = Cart.objects.create(product=product, user=user)
 
         return Response(status=201)
 
