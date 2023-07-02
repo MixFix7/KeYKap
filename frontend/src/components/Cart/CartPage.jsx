@@ -11,6 +11,11 @@ const CartPage = () => {
   const { user } = useContext(AuthContext);
   const [cart, setCart] = useState([]);
 
+
+  console.log(cart)
+  // const total_price = cart[0].total_price
+  
+
   const fetchCartData = async () => {
     try {
       const response = await fetch(`http://127.0.0.1:8000/api/cart/`, {
@@ -65,6 +70,12 @@ const CartPage = () => {
             />
           </div>
         ))}
+
+        <div>
+          <h1 className='text-white text-6xl'>
+            ${cart[0]?.total_price}
+          </h1>
+        </div>
       </div>
     </>
   );

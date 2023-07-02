@@ -69,6 +69,13 @@ class CartView(APIView):
         user = request.data.get('user')
         cart = Cart.objects.filter(user__username=user)
         cart_serializer = CartSerializer(cart, many=True)
+        total_price = 0
+
+        for price in cart:
+            total_price += price.product.price
+
+        cart.update(total_price=total_price)
+
         return Response(cart_serializer.data)
 
 
@@ -76,11 +83,13 @@ class CartAddProducts(APIView):
     def post(self, request):
         count = request.data.get('count')
         user = request.data.get('user')
+
         for _ in range(count):
             product_name = request.data.get('product_name')
             product = Product.objects.get(name=product_name)
             user = User.objects.get(username=user)
             cart = Cart.objects.create(product=product, user=user)
+
         return Response(status=status.HTTP_201_CREATED)
 
 
