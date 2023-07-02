@@ -7,7 +7,7 @@ import {AuthContext} from '../../Authorization/AuthContext';
 const Header = () => {
   let {user} = useContext(AuthContext)
   return (
-    <header className='w-screen py-5'> 
+    <header className='py-5'> 
         <div className='flex items-center justify-between text-white'>
             <Logo/>
             <NavHeader/>

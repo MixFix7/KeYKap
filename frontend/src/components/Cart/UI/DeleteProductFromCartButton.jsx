@@ -8,6 +8,7 @@ const DeleteProductFromCartButton = ({idProduct, username, onClick}) => {
   return (
     <div>
       <button
+        className='mr-1 ml-2'
         onClick={()=> onClick(idProduct)}
       >
         <FaTrashAlt 

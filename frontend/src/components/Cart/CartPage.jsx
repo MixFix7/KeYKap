@@ -5,6 +5,8 @@ import { useLoaderData } from 'react-router-dom';
 import Product from './../Home/NewProduct/Product';
 import DeleteProductFromCartButton from './UI/DeleteProductFromCartButton';
 import axios from 'axios';
+import ListOfProducts from './ListOfProducts';
+import ProductColumn from './UI/ProductColumn';
 
 
 const CartPage = () => {
@@ -13,7 +15,6 @@ const CartPage = () => {
 
 
   console.log(cart)
-  // const total_price = cart[0].total_price
   
 
   const fetchCartData = async () => {
@@ -50,33 +51,22 @@ const CartPage = () => {
   return (
     <>
       <Header />
-      <div>
-        {cart.map((product) => (
-          <div
-            key={product.id}
-            className='flex items-center'
-          >
-            <Product
-              id={product.id}
-              name={product.productsInfo.name}
-              price={product.productsInfo.price}
-              img1={product.productsInfo.photos[0].photo}
-              img2={product.productsInfo.photos[1].photo}
-            />
-            <DeleteProductFromCartButton
-              idProduct={product.id}
-              username={user.username}
-              onClick={() => deleteProductFromCart(product.id)}
-            />
-          </div>
+      <ListOfProducts>
+        {cart.map((product) => (        
+        <ProductColumn
+            id={product.id}
+            name={product.productsInfo.name}
+            price={product.productsInfo.price}
+            img={product.productsInfo.photos[0].photo}
+            onClick={deleteProductFromCart}
+          />
         ))}
-
-        <div>
           <h1 className='text-white text-6xl'>
             ${cart[0]?.total_price}
           </h1>
-        </div>
-      </div>
+      </ListOfProducts>
+    
+      
     </>
   );
 };
