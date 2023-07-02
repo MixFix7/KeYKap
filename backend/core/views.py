@@ -65,9 +65,19 @@ class AllProductsViewSet(APIView):
 
 class CartView(APIView):
     def get(self, request, user):
-        cart = Cart.objects.filter(user__username=user, product__name='Keychron Q8')
+        cart = Cart.objects.filter(user__username=user)
         cart_serializer = CartSerializer(cart, many=True)
         return Response(cart_serializer.data)
+
+    def post(self, request, user):
+
+        product_name = request.data.get('product_name')
+        product = Product.objects.get(name=product_name)
+        user = User.objects.get(username=user)
+        cart = Cart.objects.create(product=product, user=user)
+
+        return Response(status=201)
+
 
 
 

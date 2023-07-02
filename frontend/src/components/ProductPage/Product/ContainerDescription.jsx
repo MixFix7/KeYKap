@@ -5,9 +5,11 @@ import { TextInformationProdcut } from './TextInformationProdcut';
 
 const ContainerDescription = ({data}) => {
     const [price, setPrice] = useState(data.price)
+    const [count, setCount] = useState(1)
 
     const updatePriceByCounterProducts = (newPrice) => {
       setPrice(data.price * newPrice)
+      setCount(newPrice)
     }
 
   return (
@@ -16,7 +18,7 @@ const ContainerDescription = ({data}) => {
             <TextInformationProdcut data={data} price={price}/>
           <div className='flex'>
             <CounterProducts onDataChange={updatePriceByCounterProducts}/>
-            <AddToCartButton/>
+            <AddToCartButton data={data} count={count}/>
           </div>
         </div>
     </div>

@@ -7,7 +7,6 @@ import Product from './../Home/NewProduct/Product';
 const CartPage = () => {
     const {user} = useContext(AuthContext)
     const cart = useLoaderData()
-    console.log(cart)
 
   return (
     <>
@@ -15,8 +14,7 @@ const CartPage = () => {
         <div>
         {cart.map((product) => (
           <>
-            {console.log(product.productsInfo.name)}
-            <Product
+            <Product       
                 key={product.productsInfo.id}
                 id={product.productsInfo.id}
                 name={product.productsInfo.name}
