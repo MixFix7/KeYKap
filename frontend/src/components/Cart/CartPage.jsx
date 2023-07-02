@@ -13,16 +13,14 @@ const CartPage = () => {
         <Header/>
         <div>
         {cart.map((product) => (
-          <>
-            <Product       
-                key={product.productsInfo.id}
-                id={product.productsInfo.id}
-                name={product.productsInfo.name}
-                price={product.productsInfo.price}
-                img1={product.productsInfo.photos[0].photo}
-                img2={product.productsInfo.photos[1].photo}
+            <Product
+              key={product.id}
+              id={product.id}
+              name={product.productsInfo.name}
+              price={product.productsInfo.price}
+              img1={product.productsInfo.photos[0].photo}
+              img2={product.productsInfo.photos[1].photo}
             />
-          </>
         ))}
       </div>
     </>

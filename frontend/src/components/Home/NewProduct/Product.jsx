@@ -26,7 +26,7 @@ const Product = (props) => {
               className={`transition-transform duration-300 ${isHovered ? 'hover:scale-125 hover:translate-y-[-0%] hover:translate-x-[-0%]' : ''}`}
               style={{width: '100%', height: '100%'}}
               src={`http://127.0.0.1:8000/${photo}`}
-              alt={props.name} 
+              alt={props.id} 
               onMouseEnter={HoverImageEnter}
               onMouseLeave={HoverImageLeave}
             />
