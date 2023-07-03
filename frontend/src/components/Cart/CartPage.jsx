@@ -7,6 +7,7 @@ import DeleteProductFromCartButton from './UI/DeleteProductFromCartButton';
 import axios from 'axios';
 import ListOfProducts from './ListOfProducts';
 import ProductColumn from './UI/ProductColumn';
+import BottomPartList from './BottomPartList';
 
 
 const CartPage = () => {
@@ -51,22 +52,19 @@ const CartPage = () => {
   return (
     <>
       <Header />
-      <ListOfProducts>
-        {cart.map((product) => (        
-        <ProductColumn
-            id={product.id}
-            name={product.productsInfo.name}
-            price={product.productsInfo.price}
-            img={product.productsInfo.photos[0].photo}
-            onClick={deleteProductFromCart}
-          />
-        ))}
-          <h1 className='text-white text-6xl'>
-            ${cart[0]?.total_price}
-          </h1>
-      </ListOfProducts>
-    
-      
+        <ListOfProducts >
+          {cart.map((product) => (        
+          <ProductColumn
+              id={product.id}
+              name={product.productsInfo.name}
+              price={product.productsInfo.price}
+              img={product.productsInfo.photos[0].photo}
+              onClick={deleteProductFromCart}
+            />
+          ))}
+        </ListOfProducts>  
+
+        <BottomPartList total_price={cart[0]?.total_price}/>         
     </>
   );
 };

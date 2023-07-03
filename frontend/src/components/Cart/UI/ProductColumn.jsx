@@ -4,7 +4,8 @@ import DeleteProductFromCartButton from './DeleteProductFromCartButton';
 
 const ProductColumn = ({id, name, img, price, onClick}) => {
   return (
-    <div className='flex items-center justify-between mb-9 border-solid border-4 py-4 px-4 border-white rounded-xl'>
+      <div className='flex items-center justify-between mb-9 border-solid border-4 py-4 px-4 
+      border-white rounded-xl bg-cyan-700'>
         <NavLink to={`/product/${name}/`} >
             <img 
               src={`http://127.0.0.1:8000/${img}`} 
