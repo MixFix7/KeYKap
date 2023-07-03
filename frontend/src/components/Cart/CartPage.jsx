@@ -47,18 +47,21 @@ const CartPage = () => {
     fetchCartData();
   }, []);
 
-  const BuyProducts = () => {
+  const BuyProducts = async () => {
     const formData = new FormData()
     formData.append('count', cart.length)
     formData.append('user', user.username)
-    for(let i = 0; cart.length; i++) {
+    for(let i = 0; i < cart.length; i++) {
+      console.log(i)
         formData.append(`product_${i}`, cart[i].id)
     }
     
-    const response = fetch('http://localhost:8000/api/cart/buy/', {
+    const response = await fetch('http://localhost:8000/api/cart/buy/', {
       method: 'POST',
       body: formData
     })
+
+    fetchCartData()
   }
 
   return (
@@ -77,7 +80,7 @@ const CartPage = () => {
           ))}
         </ListOfProducts>  
 
-        <BottomPartList total_price={cart[0]?.total_price}/>         
+        <BottomPartList BuyProductsOnClick={BuyProducts} total_price={cart[0]?.total_price}/>         
     </>
   );
 };
