@@ -67,7 +67,7 @@ class AllProductsViewSet(APIView):
 class CartView(APIView):
     def post(self, request):
         user = request.data.get('user')
-        cart = Cart.objects.filter(user__username=user)
+        cart = Cart.objects.filter(user__username=user, purchased=False)
         cart_serializer = CartSerializer(cart, many=True)
         total_price = 0
 
@@ -100,6 +100,25 @@ class DeleteCart(APIView):
             return Response(status=status.HTTP_204_NO_CONTENT)
         except Cart.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+class BuyProductsFromCart(APIView):
+    def post(self, request):
+        count = request.data.get('count')
+        user = request.data.get('user')
+
+        try:
+            for _ in range(count):
+                cart_id = request.data.get("cart_id")
+                Cart.objects.get(id=cart_id, user__username=user).update(purchased=True)
+
+        except Exception as e:
+            return Response(f"Unsuccessful purchase attempt, error {e}", status=status.HTTP_500_BAD_REQUEST)
+
+        return Response(status=status.HTTP_200_OK)
+
+
+
 
 
 
