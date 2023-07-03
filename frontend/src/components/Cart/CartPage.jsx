@@ -18,7 +18,7 @@ const CartPage = () => {
 
   const fetchCartData = async () => {
     try {
-      const response = await fetch(`http://127.0.0.1:8000/api/cart/`, {
+      const response = await fetch(`http://127.0.0.1:8000/cart/allCart/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ const CartPage = () => {
 
   const deleteProductFromCart = async (idProduct) => {
     try {
-      await axios.delete(`http://127.0.0.1:8000/api/cart/remove/${idProduct}/`);
+      await axios.delete(`http://127.0.0.1:8000/cart/remove/${idProduct}/`);
       fetchCartData();
     } catch (error) {
       console.log(error);
@@ -56,7 +56,7 @@ const CartPage = () => {
         formData.append(`product_${i}`, cart[i].id)
     }
     
-    const response = await fetch('http://localhost:8000/api/cart/buy/', {
+    const response = await fetch('http://localhost:8000/cart/buy/', {
       method: 'POST',
       body: formData
     })
