@@ -14,9 +14,7 @@ const CartPage = () => {
   const { user } = useContext(AuthContext);
   const [cart, setCart] = useState([]);
 
-
   console.log(cart)
-  
 
   const fetchCartData = async () => {
     try {
@@ -32,7 +30,7 @@ const CartPage = () => {
       const data = await response.json()
       setCart(data)
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
@@ -49,12 +47,27 @@ const CartPage = () => {
     fetchCartData();
   }, []);
 
+  const BuyProducts = () => {
+    const formData = new FormData()
+    formData.append('count', cart.length)
+    formData.append('user', user.username)
+    for(let i = 0; cart.length; i++) {
+        formData.append(`product_${i}`, cart[i].id)
+    }
+    
+    const response = fetch('http://localhost:8000/api/cart/buy/', {
+      method: 'POST',
+      body: formData
+    })
+  }
+
   return (
     <>
       <Header />
         <ListOfProducts >
           {cart.map((product) => (        
           <ProductColumn
+              key={product.id}
               id={product.id}
               name={product.productsInfo.name}
               price={product.productsInfo.price}

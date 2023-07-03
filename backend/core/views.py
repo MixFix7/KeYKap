@@ -108,9 +108,9 @@ class BuyProductsFromCart(APIView):
         user = request.data.get('user')
 
         try:
-            for _ in range(count):
-                cart_id = request.data.get("cart_id")
-                Cart.objects.get(id=cart_id, user__username=user).update(purchased=True)
+            for i in range(count):
+                product_id = request.data.get(f"product_{i}")
+                Cart.objects.get(id=product_id, user__username=user).update(purchased=True)
 
         except Exception as e:
             return Response(f"Unsuccessful purchase attempt, error {e}", status=status.HTTP_500_BAD_REQUEST)
