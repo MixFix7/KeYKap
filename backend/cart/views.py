@@ -19,6 +19,9 @@ class CartView(APIView):
 
         return Response(cart_serializer.data)
 
+#
+# class GetProductsCountInCart(APIView):
+
 
 class CartAddProducts(APIView):
     def post(self, request):
@@ -51,7 +54,7 @@ class BuyProductsFromCart(APIView):
         # try:
         for i in range(int(count)):
             product_id = request.data.get(f"product_{i}")
-            Cart.objects.filter(id=product_id, user__username=user).update(purchased=True)
+            Cart.objects.get(id=product_id, user__username=user).make_product_purchased()
 
         # except Exception as e:
         #     return Response(f"Unsuccessful purchase attempt, error {e}", status=status.HTTP_500_INTERNAL_SERVER_ERROR)

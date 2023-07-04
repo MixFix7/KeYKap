@@ -11,6 +11,7 @@ const Header = () => {
         <div className='flex items-center justify-between text-white'>
             <Logo/>
             <NavHeader/>
+            <h1 className='text-white'>{user?.products_in_cart}</h1>
         </div>
     </header>
   )
