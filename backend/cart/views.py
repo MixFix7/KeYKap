@@ -22,7 +22,7 @@ class CartView(APIView):
 
 class GetProductsCountInCart(APIView):
     def get(self, request, user_id):
-        count = Cart.objects.get_count_products_in_cart(user_id=user_id)
+        count = Cart.get_count_products_in_cart(user_id=user_id)
         return Response({'count': count})
 
 
