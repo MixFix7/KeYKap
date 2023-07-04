@@ -14,8 +14,8 @@ class Cart(models.Model):
         self.save()
 
     @classmethod
-    def get_count_products_in_cart(cls):
-        count = cls.objects.filter(purchased=False).count()
+    def get_count_products_in_cart(cls, user_id):
+        count = cls.objects.filter(purchased=False, user__id=user_id).count()
         return count
 
     def __str__(self):

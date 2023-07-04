@@ -19,8 +19,11 @@ class CartView(APIView):
 
         return Response(cart_serializer.data)
 
-#
-# class GetProductsCountInCart(APIView):
+
+class GetProductsCountInCart(APIView):
+    def get(self, request, user_id):
+        count = Cart.objects.get_count_products_in_cart(user_id=user_id)
+        return Response({'count': count})
 
 
 class CartAddProducts(APIView):
