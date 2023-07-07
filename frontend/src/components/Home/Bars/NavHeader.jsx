@@ -29,7 +29,10 @@ const NavHeader = () => {
         )}
             <Link className='mr-6 text-2xl' to={urls.AboutUs}>About us</Link>
             <Link className='mr-6 text-2xl' to={urls.Contacts}>Contacts</Link>
-            {/* <Link className='mr-6 text-2xl' to={urls.SignUp}>Sign up</Link> */}
+
+            {user.isAdmin  && (
+              <Link className='mr-6 text-2xl' to={urls.AddNewProducts} />
+            )}
 
             {user ? (
               <button onClick={logoutUser} className='mr-6 text-2xl'>Log out</button>

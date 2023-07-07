@@ -6,5 +6,5 @@ from channels.routing import ProtocolTypeRouter, URLRouter
 from . import consumers
 
 websocket_urlpatterns = [
-    re_path(r'ws/count-cart/(?P<user_id>\w+)/$', consumers.CartConsumer.as_asgi()),
+    path('ws/count-cart/<int:user_id>/', consumers.CartConsumer.as_asgi()),
 ]

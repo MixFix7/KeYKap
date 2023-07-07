@@ -1,52 +1,31 @@
 import axios from 'axios'
-import React, { useContext, useEffect, useState, useRef } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { AuthContext } from '../../Authorization/AuthContext'
-import { io } from 'socket.io-client'
-import { client, w3cwebsocket } from 'websocket'
 
 
 
 const CountInCart = () => {
     let {user} = useContext(AuthContext)
     const [countInCart, setCountInCart] = useState(0)
-    const clientRef = useRef(null)
 
-    useEffect(() => {
-      const client = new w3cwebsocket(`ws://localhost:8000/ws/count-cart/${user.user_id}/`)
-      clientRef.current = client
-
-      client.onopen = () => {
-        console.log('WebSocket зєднання встановленно')
-      }
-
-      client.onmessage = (message) => {
-        setCountInCart(message.data)
-        console.log(message.data)
-      }
-
-      client.onerror = (error) => {
+    const getCountInCart = async () => {
+      try {
+        const response = await axios.get(`http://localhost:8000/cart/products-count/${user.user_id}`)
+        setCountInCart(response.data.count)
+      } catch (error) {
         console.error(error)
       }
+    }
+    
 
-      client.onclose = () => {
-        console.log('WebSocket зєднання закрито')
-      }
-
-      return () => {
-        client.close()
-      }
-
+    useEffect(() => {
+      getCountInCart()
+      setInterval(()=>{
+        getCountInCart()
+      }, 3000)
     }, [])
 
-    const handleReconnect = () => {
-      if (clientRef.current && clientRef.current.readyState === clientRef.current.CLOSED) {
-        // Перепідключитись, якщо WebSocket закрито
-        const client = new w3cwebsocket(`ws://localhost:8000/ws/count-cart/${user.user_id}/`);
-        clientRef.current = client;
-  
-        // Реєстрація обробників подій і т.д.
-      }
-    };
+
     
   return (
     <div className='bg-red-500 px-1 rounded-full'>

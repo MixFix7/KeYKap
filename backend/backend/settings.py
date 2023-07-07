@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     "cart",
     "rest_framework",
     "corsheaders",
-    'rest_framework_simplejwt.token_blacklist'
+    'rest_framework_simplejwt.token_blacklist',
 ]
 
 MIDDLEWARE = [
@@ -124,10 +124,12 @@ ROOT_URLCONF = "backend.urls"
 
 CHANNEL_LAYERS = {
     'default': {
-        'BACKEND': 'channels.layers.InMemoryChannelLayer',
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [('localhost', 6379)],
+        },
     },
 }
-
 
 TEMPLATES = [
     {

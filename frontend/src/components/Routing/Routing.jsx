@@ -22,6 +22,7 @@ export const urls = {
     SignUp: '/auth/sign-up',
     LogIn: '/auth/log-in',
     SelectAvatar: '/auth/sign-up/select-avatar',
+    AddNewProducts: '/add-new-product',
 }
 
 const router = createBrowserRouter([

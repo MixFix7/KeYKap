@@ -18,6 +18,7 @@ class CartConsumer(AsyncWebsocketConsumer):
         # Від'єднуйтеся від групи WebSocket при закритті з'єднання
         await self.channel_layer.group_discard(self.group_name, self.channel_name)
 
-    async def send_cart_count(self, event):
-        count = Cart.get_count_products_in_cart(user_id=self.user_id)
-        await self.send(text_data=str(count))
+    async def receive(self, event, text_data):
+        if text_data == 'GET':
+            count = Cart.get_count_products_in_cart(user_id=self.user_id)
+            await self.send(text_data=str(count))
