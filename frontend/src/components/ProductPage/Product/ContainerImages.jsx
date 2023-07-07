@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react'
-import ReactImageMagnify from 'react-image-magnify';
 
 
 
