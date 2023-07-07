@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { urls } from '../../Routing/Routing';
+import { urls } from '../../../Routing/Routing';
 import {VscCircleLargeFilled} from 'react-icons/vsc'
 
 const UserInfo = ({user, logoutUser}) => {

@@ -6,7 +6,8 @@ import LoginPage from '../Authorization/LogInPage';
 import SignUpPage from "../Authorization/SignUpPage";
 import AvatarSelectPage from "../Authorization/AvatarSelectPage";
 import CartPage from "../Cart/CartPage";
-import AdminPage from "../Admin_Panel/AdminPage";
+import AdminPage from "../Admin_Panel/Panel/AdminPage";
+import AddProductPage from "../Admin_Panel/AddProductPage/AddProductPage";
 
 
 export const urls = {
@@ -19,7 +20,8 @@ export const urls = {
     SignUp: '/auth/sign-up',
     LogIn: '/auth/log-in',
     SelectAvatar: '/auth/sign-up/select-avatar',
-    AdminPanel: '/admin-panel',
+    AdminPanel: '/admin-panel/',
+    AddProduct: 'add-product',
 }
 
 const router = createBrowserRouter([
@@ -67,10 +69,16 @@ const router = createBrowserRouter([
         path: urls.SelectAvatar,
         element: <AvatarSelectPage/>
     },
+
+    // ADMIN PANEL
     {
         path: urls.AdminPanel,
         element: <AdminPage/>
-    }
+    },
+    {
+        path: urls.AdminPanel + urls.AddProduct,
+        element: <AddProductPage/>
+    },
 ])
 
 

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
-import { AuthContext } from '../../Authorization/AuthContext'
+import { AuthContext } from '../../../Authorization/AuthContext'
 import NavAdmin from './NavAdmin';
-import Logo from './../../Home/UI/Logo';
+import Logo from '../../../Home/UI/Logo';
 
 const AdminHeader = () => {
     const {user} = useContext(AuthContext)
