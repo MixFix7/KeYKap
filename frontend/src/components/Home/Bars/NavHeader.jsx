@@ -31,7 +31,7 @@ const NavHeader = () => {
             <Link className='mr-6 text-2xl' to={urls.Contacts}>Contacts</Link>
 
             {user.isAdmin  && (
-              <Link className='mr-6 text-2xl' to={urls.AddNewProducts}>Add product</Link>
+              <Link className='mr-6 text-2xl' to={urls.AdminPanel}>Admin panel</Link>
             )}
 
             {user ? (
