@@ -1,15 +1,11 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from './../Home/Home';
-import Product from "../Home/NewProduct/Product";
 import ProductPage from './../ProductPage/ProductPage';
 import axios from 'axios';
-import MainBar from "../Home/Bars/MainBar";
 import LoginPage from '../Authorization/LogInPage';
 import SignUpPage from "../Authorization/SignUpPage";
-import SelectAvatar from "../Authorization/UI/SelectAvatar.jsx";
 import AvatarSelectPage from "../Authorization/AvatarSelectPage";
 import CartPage from "../Cart/CartPage";
-import { loaderCart } from "./Loaders/CartPageLoader";
 
 
 export const urls = {

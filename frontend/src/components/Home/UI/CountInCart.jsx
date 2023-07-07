@@ -20,9 +20,11 @@ const CountInCart = () => {
 
     useEffect(() => {
       getCountInCart()
-      setInterval(()=>{
+      let interval = setInterval(()=>{
         getCountInCart()
       }, 3000)
+    return ()=> clearInterval(interval)
+      
     }, [])
 
 

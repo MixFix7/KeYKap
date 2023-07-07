@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React from 'react'
 import {FaTrashAlt} from 'react-icons/fa'
-import { loaderCart } from '../../Routing/Loaders/CartPageLoader'
 
 const DeleteProductFromCartButton = ({idProduct, username, onClick}) => {
   
