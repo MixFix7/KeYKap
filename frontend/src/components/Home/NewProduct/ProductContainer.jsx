@@ -10,7 +10,7 @@ const ProductContainer = ({json}) => {
       <div className={style.productContainer}>
         {json.map((category) => (
           <div key={category.id}>
-            <h1 className='text-white text-5xl'>{category.category}</h1>
+            <h1 className='text-white text-5xl bg-zinc-900 p-2 rounded-3xl'>{category.category}</h1>
             <div className='flex'>
               {category.products.length > 0 ? (
                 category.products.map((product) => (
@@ -24,7 +24,7 @@ const ProductContainer = ({json}) => {
                   />
                 ))
               ) : (
-                <h1>No products available</h1>
+                <h1 className='text-white'>No products available</h1>
               )}
             </div>
           </div>
