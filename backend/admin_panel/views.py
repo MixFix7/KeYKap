@@ -19,15 +19,7 @@ class AddProduct(APIView):
         lubricated = request.data.get('lubricated')
         # photos = request.FILES.get('photos')
 
-        print(brand,
-            description,
-            color,
-            keyboard_type,
-            switches_name,
-            switches_img,
-            lubricated,
-              price,
-        )
+        print(color)
 
         product = Product.objects.create(
             category=Category.objects.get(category=category),

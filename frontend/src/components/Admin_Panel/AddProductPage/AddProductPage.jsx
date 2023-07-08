@@ -23,6 +23,7 @@ const AddProductPage = () => {
         formData.append('product_name', e.target.name.value)
         formData.append('price', e.target.price.value)
         formData.append('brand', e.target.brand.value)
+        formData.append('color', e.target.color.value)
         formData.append('description', e.target.description.value)
         formData.append('keyboard_type', e.target.keyboard_type.value)
         formData.append('switches_name', e.target.switches_name.value)
