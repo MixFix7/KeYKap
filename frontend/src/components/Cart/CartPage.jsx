@@ -52,7 +52,6 @@ const CartPage = () => {
     formData.append('count', cart.length)
     formData.append('user', user.username)
     for(let i = 0; i < cart.length; i++) {
-      console.log(i)
         formData.append(`product_${i}`, cart[i].id)
     }
     
@@ -76,6 +75,7 @@ const CartPage = () => {
               price={product.productsInfo.price}
               img={product.productsInfo.photos[0].photo}
               onClick={deleteProductFromCart}
+              color={product.productsInfo.specs.color}
             />
           ))}
         </ListOfProducts>  
