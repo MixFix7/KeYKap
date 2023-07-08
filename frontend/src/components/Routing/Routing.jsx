@@ -30,7 +30,7 @@ const router = createBrowserRouter([
         element: <Home/>,
         loader: async ({request}) => {
             try {
-                const response = await axios.get('http://localhost:8000/api/allProducts/')
+                const response = await axios.get('http://localhost:8000/api/allProductsByCategories/')
                 return response.data
 
             } catch (error) {

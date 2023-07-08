@@ -4,11 +4,11 @@
     justify-content: flex-start;
     max-width: 2150px; 
     margin: 0 auto; 
+    flex-direction: column;
   }
   
   .product {
     flex: 0 0 20%; 
-    max-width: 20%; 
     height: 400px; 
     padding: 20px; 
   }
@@ -26,3 +26,10 @@
       max-width: 50%;
     }
   }
+
+  .productRow {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  

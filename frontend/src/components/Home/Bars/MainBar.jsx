@@ -12,6 +12,7 @@ const MainBar = ({products}) => {
   return (
     <main className='float-right flex-1 p-4'>
       <div>
+          
          <ProductContainer json={products}/>
       </div>
     </main>

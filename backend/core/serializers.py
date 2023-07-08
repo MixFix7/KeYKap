@@ -33,6 +33,7 @@ class KeyboardSpecsSerializer(SpecsSerializer):
 
 
 class InfoProductSerializer(serializers.ModelSerializer):
+    category_name = serializers.CharField(source='category')
     specs = serializers.SerializerMethodField()
     photos = serializers.SerializerMethodField()
 
@@ -48,7 +49,7 @@ class InfoProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ['id', 'name', 'category', 'price', 'photos', 'specs']
+        fields = ['id', 'name', 'category_name', 'price', 'photos', 'specs']
 
 
 class CategoryProductsSerializer(serializers.ModelSerializer):
@@ -56,7 +57,7 @@ class CategoryProductsSerializer(serializers.ModelSerializer):
 
     def get_products(self, category):
         products = category.product_set.all()
-        product_serializer = ProductSerializer(products, many=True)
+        product_serializer = InfoProductSerializer(products, many=True)
         return product_serializer.data
 
     class Meta:
