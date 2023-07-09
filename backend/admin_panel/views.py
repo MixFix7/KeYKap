@@ -2,7 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.response import Response
-from core.models import Product, KeyboardSpecs, ProductPhoto, Category
+from core.models import Product, KeyboardSpecs, ProductPhoto, Category, ProductPhoto
 
 
 class AddProduct(APIView):
@@ -17,9 +17,7 @@ class AddProduct(APIView):
         switches_name = request.data.get('switches_name')
         switches_img = request.FILES.get('switches_img')
         lubricated = request.data.get('lubricated')
-        # photos = request.FILES.get('photos')
-
-        print(color)
+        photos = request.FILES.getlist('photos')
 
         product = Product.objects.create(
             category=Category.objects.get(category=category),
@@ -37,6 +35,12 @@ class AddProduct(APIView):
             switches_img=switches_img,
             lubricated=bool(lubricated),
         )
+
+        for photo in photos:
+            ProductPhoto.objects.create(
+                product=product,
+                photo=photo
+            )
 
         return Response(status=status.HTTP_201_CREATED)
 

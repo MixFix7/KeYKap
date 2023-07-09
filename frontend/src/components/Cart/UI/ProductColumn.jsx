@@ -17,7 +17,7 @@ const ProductColumn = ({id, name, img, price, onClick, color}) => {
               style={{width: '250px'}}
             />
         </NavLink>
-        <div className='' style={{maxWidth: '500px', fontSize: '100%'}}>
+        <div className='' style={{maxWidth: '500px'}}>
           <h1 className='text-white font-extralight' style={{fontSize: '3em'}}>{name}</h1>
         </div>
 
